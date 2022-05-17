@@ -5,15 +5,55 @@
 #include <iostream>
 using namespace std;
 
-
 // EFFECTS: return true if the password is a valid one
-bool isValidPassword(char password[]){
+auto isValidPassword( const char password [] ) -> bool
+{
     // TODO: Implement this function.
+    bool num      = false;
+    bool alpha    = false;
+    bool numalpha = false;
+    for ( size_t i = 0;; i++ )
+    {
+        if ( i == 50 )
+        {
+            return ( ( num ) && ( alpha ) && ( numalpha ) );
+        }
+        if ( password [ i ] == '\0' )
+        {
+            return ( ( num ) && ( alpha ) && ( numalpha ) );
+        }
+        if ( password [ i ] >= '0' )
+        {
+            if ( password [ i ] <= '9' )
+            {
+                num = true;
+                continue;
+            }
+        }
+        if ( ( password [ i ] - 'A' )
+                 * ( 'Z' - password [ i ] )
+             >= 0 )
+        {
+            alpha = true;
+        }
+        else
+        {
+            if ( ( password [ i ] <= 'z' )
+                 && ( password [ i ] >= 'a' ) )
+            {
+                alpha = true;
+            }
+            else
+            {
+                numalpha = true;
+            }
+        }
+    }
 }
 
-
-int main(){
-    char password[50] = {};
+auto main( ) -> int
+{
+    char password [ 50 ] = { };
     cin >> password;
-    cout << isValidPassword(password) << endl;
+    cout << isValidPassword( password ) << endl;
 }
