@@ -1,0 +1,20 @@
+{
+        Checks: bugprone*,
+        clang-analyzer*,
+        concurrency*,
+        cppcoreguidelines*,
+        hicpp*,
+        misc*,
+        modernize*,
+        performance*,
+        readability*,
+        modernize-loop-convert,
+        -readability-redundant-control-flow,
+        -hicpp-no-array-decay,
+        -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+        -hicpp-avoid-c-arrays,
+        -modernize-avoid-c-arrays,
+        -cppcoreguidelines-avoid-c-arrays,
+        -hicpp-avoid-goto,
+        -cppcoreguidelines-avoid-goto
+}
