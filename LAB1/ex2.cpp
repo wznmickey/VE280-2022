@@ -14,13 +14,20 @@ auto isValidPassword( const char password [] ) -> bool
     bool numalpha = false;
     for ( size_t i = 0;; i++ )
     {
-        if ( i == 50 )
+
+        if ( i == 51 )
         {
             return ( ( num ) && ( alpha ) && ( numalpha ) );
         }
+
         if ( password [ i ] == '\0' )
         {
             return ( ( num ) && ( alpha ) && ( numalpha ) );
+        }
+        if ( ( password [ i ] < 33 )
+             || ( password [ i ] > 126 ) )
+        {
+            throw ;
         }
         if ( password [ i ] >= '0' )
         {
@@ -53,7 +60,8 @@ auto isValidPassword( const char password [] ) -> bool
 
 auto main( ) -> int
 {
-    char password [ 50 ] = { };
+    char password [ 51 ] = { };
     cin >> password;
     cout << isValidPassword( password ) << endl;
+    return 0;
 }
