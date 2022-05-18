@@ -53,7 +53,7 @@ dump() {
 list() {
 	# List all files in directory `webserver/`.
 	# TODO: Replace this line with a linux command line.
-	ls -a webserver
+	ls webserver
 }
 
 
