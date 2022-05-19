@@ -11,7 +11,7 @@ const int MAX_N     = 850;
 
 /*
 std::array can not be used.
-So here is a struct with I that:
+So here is a struct with `I` that:
 struct
 {
     x=(I)(I+1)(I+2)/6;
@@ -35,7 +35,6 @@ template < int I > struct Tetrahedral
 {
 private:
     Tetrahedral< I - 1 > left;
-
     static const int x = ( I ) * ( I + 1 ) * ( I + 2 ) / 6;
 
 public:
@@ -48,7 +47,6 @@ public:
         return left [ i ];
     }
 };
-
 template <> struct Tetrahedral< 1 >
 {
 private:
@@ -61,21 +59,25 @@ public:
         return x;
     }
 };
+
 // trans int to string
-auto get_string( int x ) -> string
+auto get_string( int &x ) -> string
 {
-    stringstream str;
-    str << x;
-    string st;
-    str >> st;
+    auto st = to_string( x );
+    // stringstream str;
+    // str << x;
+    // string st;
+    // str >> st;
     return st;
 }
-auto in_tetrahedral( int x ) -> bool
+
+// check if `x` is in tetrahedral.
+// use binary search.
+auto in_tetrahedral( int &x ) -> bool
 {
     Tetrahedral< MAX_N > tetrahedral { };
     int                  left  = 0;
     int                  right = MAX_N;
-
     while ( left <= right )
     {
         int mid = left + ( right - left ) / 2;
@@ -95,6 +97,13 @@ auto in_tetrahedral( int x ) -> bool
     return false;
 }
 
+// Print print_prompt.
+void print_prompt( )
+{
+    std::cout
+        << "Please enter the integer and the test number: ";
+}
+
 const auto check_tetrahedral = []( int x )
 {
     return in_tetrahedral( x );
@@ -109,15 +118,11 @@ const auto check_palindrome = []( int x )
             return false;
         }
     }
-
     return true;
 };
 const auto check_self_dividing = []( int x )
 {
-    stringstream str;
-    str << x;
-    string st;
-    str >> st;
+    auto st = get_string( x );
     for ( auto i : st )
     {
         if ( i == '0' )
@@ -157,19 +162,15 @@ bool ( *const check [] )( int )
         check_self_dividing,
         check_boring };
 
-// Print print_prompt.
-void print_prompt( )
-{
-    std::cout
-        << "Please enter the integer and the test number: ";
-}
 // x is the first input and y is the second input.
 // Check whether it follow input rules.
-auto check_input( int x, int y ) -> bool
+auto check_input( int &x, int &y ) -> bool
 {
     return ( x > 0 ) && ( x <= MAX_INPUT )
            && ( y >= RANGE_MIN ) && ( y <= RANGE_MAX );
 }
+
+// main function of project 1
 auto main( ) -> int
 {
     int x = 0;
