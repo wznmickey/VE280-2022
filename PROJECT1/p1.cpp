@@ -1,7 +1,6 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
-#include <sstream>
 #include <string>
 using namespace std;
 const int MAX_INPUT = 10000000;
@@ -63,7 +62,9 @@ public:
 // trans int to string
 auto get_string( int &x ) -> string
 {
+    
     auto st = to_string( x );
+    // NO sstream allowed.
     // stringstream str;
     // str << x;
     // string st;
@@ -179,6 +180,7 @@ auto main( ) -> int
     {
         print_prompt( );
         cin >> x >> y;
+        // cout<<x<<" "<<y<<endl;
         if ( check_input( x, y ) )
         {
             break;
