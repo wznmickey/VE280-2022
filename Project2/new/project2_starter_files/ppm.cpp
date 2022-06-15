@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    constexpr auto width = 400u, height = 800u;
+    constexpr auto width = 800u, height = 800u;
 
     ofstream ofs("first.ppm", ios_base::out | ios_base::binary);
 
@@ -11,9 +11,9 @@ int main() {
  
     for (auto j = 0u; j < height; ++j)
         for (auto i = 0u; i < width; ++i)
-            ofs << (char) (255)        // red
-		<< (char) (255)        // green
-		<< (char) (255); // red, green, blue
+            ofs << (char) (i % 256)        // red
+		<< (char) (j % 256)        // green
+		<< (char) ((i + j) % 256); // red, green, blue
 
     ofs.close();
     return EXIT_SUCCESS;
