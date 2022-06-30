@@ -11,9 +11,9 @@ int main() {
  
     for (auto j = 0u; j < height; ++j)
         for (auto i = 0u; i < width; ++i)
-            ofs << (char) (255)        // red
-		<< (char) (255)        // green
-		<< (char) (255); // red, green, blue
+            ofs << (char) (i)        // red
+		<< (char) (i)        // green
+		<< (char) (i+j)%225; // red, green, blue
 
     ofs.close();
     return EXIT_SUCCESS;
