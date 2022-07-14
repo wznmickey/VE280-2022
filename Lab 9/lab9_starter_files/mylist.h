@@ -69,6 +69,4 @@ List<int> Add(const List<int> &a, const List<int> &b);
 // EFFECTS: adds the numbers represented by a and b;
 //          returns the result
 
-#include "mylist_impl.h"
-
 #endif //LIST_H
