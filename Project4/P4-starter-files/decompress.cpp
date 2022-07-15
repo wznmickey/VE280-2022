@@ -3,19 +3,18 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-int main( int  /*argc*/, char *argv [] )
+auto main( int /*argc*/, char *argv [] ) -> int
 {
     // TODO: implement this function
-    std::string treeFile = argv [ 1 ];
-    std::string binFile  = argv [ 2 ];
-    HuffmanTree myTree( treeFile );
-
+    std::string                treeFile = argv [ 1 ];
+    std::string                binFile  = argv [ 2 ];
+    HuffmanTree                myTree( treeFile );
     auto                       file = std::ifstream( binFile );
     std::vector< std::string > map;
     map.resize( 300 );
     for ( auto i = 1; i < 255; i++ )
     {
-        map [ i ] = ( myTree.findPath( std::string( 1, char(i) ) ) );
+        map [ i ] = ( myTree.findPath( std::string( 1, char( i ) ) ) );
     }
     std::string c;
     while ( file >> c )

@@ -10,7 +10,10 @@
 #include <vector>
 
 auto comp( const Node *a, const Node *b ) -> bool
+// REQUIRES: both pointers are not nullptr
+// EFFECTS: Return bool based on the data given
 {
+
     if ( a->getnum( ) != b->getnum( ) )
     {
         return a->getnum( ) < b->getnum( );
@@ -18,11 +21,12 @@ auto comp( const Node *a, const Node *b ) -> bool
     return ( a->getstr( ) ) [ 0 ] < ( b->getstr( ) ) [ 0 ];
 }
 
-auto main( int argc, char *argv [] ) -> int
+void handleArg( int argc, char *argv [], bool &tree, std::string &filename )
+// REQUIRES: follow handout
+// MODIFIES tree,filename
+// EFFECTS: given value to vars
+
 {
-    // TODO: implement this function
-    bool        tree = false;
-    std::string filename;
     for ( auto i = 1; i < argc; i++ )
     {
         if ( std::string( argv [ i ] ) == "-tree" )
@@ -34,21 +38,34 @@ auto main( int argc, char *argv [] ) -> int
             filename = argv [ i ];
         }
     }
+}
 
-    // auto myTree = HuffmanTree( filename );
+auto read( const std::string &filename ) -> std::string
+// REQUIRES: valid filename
+// EFFECTS: read file
 
-    auto file = std::ifstream( filename );
-
+{
+    auto        file = std::ifstream( filename );
     std::string st;
     char        c = 0;
     while ( file.get( c ) )
     {
         st += c;
     }
+    return st;
+}
+
+auto main( int argc, char *argv [] ) -> int
+{
+    // TODO: implement this function
+    bool        tree = false;
+    std::string filename;
+    handleArg( argc, argv, tree, filename );
+    // auto myTree = HuffmanTree( filename );
 
     std::vector< int > fre;
     fre.resize( 512 ); // prepare for bucket
-
+    std::string st = read( filename );
     for ( auto &j : st )
     {
         ++fre [ j ];
@@ -87,7 +104,7 @@ auto main( int argc, char *argv [] ) -> int
         return 0;
     }
 
-    for ( auto & i : st )
+    for ( auto &i : st )
     {
         std::string tt;
         tt += i;

@@ -12,18 +12,15 @@ Node::Node( const std::string &str, int num, Node *left, Node *right )
     , left( left )
     , right( right )
 {
-    // TODO: implement this function.
 }
 
 Node *Node::leftSubtree( ) const
 {
-    // TODO: implement this function.
     return left;
 }
 
 void Node::setleft( Node *n )
 {
-    // TODO: implement this function.
     left = n;
     // UNSURE delete?
     return;
@@ -31,13 +28,11 @@ void Node::setleft( Node *n )
 
 Node *Node::rightSubtree( ) const
 {
-    // TODO: implement this function.
     return right;
 }
 
 void Node::setright( Node *n )
 {
-    // TODO: implement this function.
     right = n;
     // UNSURE delete?
     return;
@@ -45,26 +40,22 @@ void Node::setright( Node *n )
 
 string Node::getstr( ) const
 {
-    // TODO: implement this function.
     return str;
 }
 
 int Node::getnum( ) const
 {
-    // TODO: implement this function.
     return num;
 }
 
 void Node::incnum( )
 {
-    // TODO: implement this function.
     ++num;
     return;
 }
 
 Node *Node::mergeNodes( Node *leftNode, Node *rightNode )
 {
-    // TODO: implement this function.
     return new Node( leftNode->str + rightNode->str, leftNode->num + rightNode->num, leftNode, rightNode );
 }
 
@@ -73,7 +64,6 @@ Node *Node::mergeNodes( Node *leftNode, Node *rightNode )
 BinaryTree::BinaryTree( Node *rootNode )
     : root( rootNode )
 {
-    // TODO: implement this function.
 }
 
 BinaryTree::~BinaryTree( )
@@ -82,7 +72,6 @@ BinaryTree::~BinaryTree( )
     {
         return;
     }
-    // TODO: implement this function.
     BinaryTree( root->leftSubtree( ) );
     BinaryTree( root->rightSubtree( ) );
     delete root;
@@ -112,28 +101,24 @@ string findPathNode( const Node *node, const string &s )
         return "";
     }
     string st;
-
-    // Use short cut here.
-
     if ( findPathDown( node->leftSubtree( ), s, '0', st ) || findPathDown( node->rightSubtree( ), s, '1', st ) )
-    {
+    { // Use short cut here.
         return st;
     }
-
-    // if ( findPathDown( node->leftSubtree( ), s, '0', st ) )
-    // {
-    //     return st;
-    // }
-    // if ( findPathDown( node->rightSubtree( ), s, '1', st ) )
-    // {
-    //     return st;
-    // }
     return "-1";
 }
 
+// if ( findPathDown( node->leftSubtree( ), s, '0', st ) )
+// {
+//     return st;
+// }
+// if ( findPathDown( node->rightSubtree( ), s, '1', st ) )
+// {
+//     return st;
+// }
+
 string BinaryTree::findPath( const string &s ) const
 {
-    // TODO: implement this function.
     return findPathNode( this->root, s );
 }
 
@@ -148,7 +133,6 @@ int sumNode( const Node *node )
 
 int BinaryTree::sum( ) const
 {
-    // TODO: implement this function.
     return sumNode( this->root );
 }
 
@@ -163,7 +147,6 @@ int depthNode( const Node *node )
 
 int BinaryTree::depth( ) const
 {
-    // TODO: implement this function.
     return depthNode( this->root );
 }
 
@@ -181,7 +164,6 @@ void preorder_numNode( const Node *node )
 
 void BinaryTree::preorder_num( ) const
 {
-    // TODO: implement this function.
     preorder_numNode( this->root );
 }
 
@@ -199,7 +181,6 @@ void inorder_strNode( const Node *node )
 
 void BinaryTree::inorder_str( ) const
 {
-    // TODO: implement this function.
     inorder_strNode( this->root );
 }
 
@@ -217,7 +198,6 @@ void postorder_numNode( const Node *node )
 
 void BinaryTree::postorder_num( ) const
 {
-    // TODO: implement this function.
     postorder_numNode( this->root );
 }
 
@@ -232,7 +212,6 @@ int allPathSumGreaterNode( const Node *node )
 
 bool BinaryTree::allPathSumGreater( int sum ) const
 {
-    // TODO: implement this function.
     return sum < allPathSumGreaterNode( this->root );
 }
 
@@ -244,18 +223,19 @@ bool covered_byNode( const Node *node1, const Node *node2 )
              && ( (
                  ( node1->getnum( ) == node2->getnum( ) ) && ( covered_byNode( node1->leftSubtree( ), node2->leftSubtree( ) ) )
                  && ( covered_byNode( node1->rightSubtree( ), node2->rightSubtree( ) ) ) ) ) ) );
-    // if ( node1 == nullptr )
-    // {
-    //     return true;
-    // }
-    // if ( node2 == nullptr )
-    // {
-    //     return false;
-    // }
-    // return (
-    //     ( node1->getnum( ) == node2->getnum( ) ) && ( covered_byNode( node1->leftSubtree( ), node2->leftSubtree( ) ) )
-    //     && ( covered_byNode( node1->rightSubtree( ), node2->rightSubtree( ) ) ) );
 }
+
+// if ( node1 == nullptr )
+// {
+//     return true;
+// }
+// if ( node2 == nullptr )
+// {
+//     return false;
+// }
+// return (
+//     ( node1->getnum( ) == node2->getnum( ) ) && ( covered_byNode( node1->leftSubtree( ), node2->leftSubtree( ) ) )
+//     && ( covered_byNode( node1->rightSubtree( ), node2->rightSubtree( ) ) ) );
 
 bool BinaryTree::covered_by( const BinaryTree &tree ) const
 {
@@ -270,7 +250,6 @@ bool covered_bySub( const Node *node1, const Node *node2 )
 
 bool BinaryTree::contained_by( const BinaryTree &tree ) const
 {
-    // TODO: implement this function.
     return ( ( this->covered_by( tree ) ) || ( covered_bySub( this->root, tree.root ) ) );
 }
 
@@ -285,6 +264,5 @@ Node *copyNode( const Node *node )
 
 BinaryTree BinaryTree::copy( ) const
 {
-    // TODO: implement this function.
     return { copyNode( this->root ) };
 }
