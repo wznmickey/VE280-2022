@@ -65,7 +65,7 @@ bool isLarger(const List<int> &a, const List<int> &b);
 //          otherwise, returns false.
 //          returns false if both a and b are empty
 
-List<int> Add(const List<int> &a, const List<int> &b);
+List<int> add(const List<int> &a, const List<int> &b);
 // EFFECTS: adds the numbers represented by a and b;
 //          returns the result
 
