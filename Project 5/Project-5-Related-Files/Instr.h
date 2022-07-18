@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 enum class InstrName {ADD, NOR, IFZ, HALT, LOAD, STORE, POP, PUSHI, NOOP};
 
