@@ -6,7 +6,6 @@
 #define INTLIST_IMPL_H
 
 #include "mylist.h"
-#include <cstdio>
 #include <iostream>
 
 template < class T > void List< T >::print( )
